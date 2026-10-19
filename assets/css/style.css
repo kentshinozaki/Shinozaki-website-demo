@@ -55,12 +55,16 @@ h1,h2,h3,h4{
   margin:0;
   letter-spacing:.02em;
 }
+h1 small,h2 small,h3 small,h4 small{ font-family:inherit; }
 p{ margin:0; }
 button{ font-family:inherit; cursor:pointer; }
 
 /* UI chrome (nav, buttons, labels, tabular data) stays in the gothic sans
-   for legibility — only running description copy switches to mincho. */
-.nav-links, .lang-toggle, .btn, .btn-reserve, .menu-tab, .badge,
+   for legibility — only running description copy switches to mincho.
+   Badges sit inline with serif headings/dish names, so they stay out of
+   this list and just inherit whichever mincho face their context uses —
+   forcing them into the sans face is what made them look mismatched. */
+.nav-links, .lang-toggle, .btn, .btn-reserve, .menu-tab,
 .footer-col h4, .footer-col a, .footer-bottom, .brand-type .en,
 .store-meta dt, .news-item time, .media-item time, .breadcrumb,
 .tag, .num, .region{
@@ -230,7 +234,7 @@ button{ font-family:inherit; cursor:pointer; }
   color:var(--paper); font-size:clamp(2.6rem,7vw,5.4rem); line-height:1.08;
 }
 .hero h1 small{
-  display:block; font-size:.32em; letter-spacing:.42em; color:var(--gold-soft); font-family:"Zen Kaku Gothic New",sans-serif; margin-top:16px;
+  display:block; font-size:.32em; letter-spacing:.42em; color:var(--gold-soft); font-family:var(--font-display); margin-top:16px;
 }
 .hero-sub{
   color:rgba(246,240,226,.86); max-width:48ch; margin-top:24px; font-size:1.02rem;

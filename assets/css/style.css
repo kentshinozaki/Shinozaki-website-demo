@@ -1,0 +1,551 @@
+/* ==========================================================================
+   Shinozaki — unagi restaurant since 1937
+   Design system: traditional lacquerware palette, modern structure.
+   ========================================================================== */
+
+:root{
+  --ink:        #241f1a;
+  --ink-soft:   #4a4038;
+  --cream:      #f6f0e2;
+  --cream-deep: #ece1c8;
+  --paper:      #fbf7ee;
+  --indigo:     #11303b;
+  --indigo-deep:#0a2027;
+  --indigo-mid: #184453;
+  --shu:        #b6481f;
+  --shu-deep:   #8a2f16;
+  --shu-bright: #d35b2a;
+  --gold:       #a8915f;
+  --gold-soft:  #d9c89a;
+  --gold-deep:  #7c6a42;
+  --line:       rgba(36,31,26,.14);
+  --line-on-dark: rgba(246,240,226,.18);
+  --shadow: 0 18px 40px -20px rgba(10,20,25,.45);
+  --radius: 2px;
+  --container: 1180px;
+  --ease: cubic-bezier(.22,.7,.2,1);
+
+  /* General descriptions use a mincho/serif stack, matching the original
+     Shinozaki site (which sets body copy in Yu Mincho / Hiragino Mincho).
+     CJK fallbacks are appended so Korean and Chinese text resolves to a
+     matching serif rather than silently falling back to a sans face. */
+  --font-serif: "Yu Mincho","YuMincho","Hiragino Mincho Pro","HiraMinProN-W3","Noto Serif JP","Noto Serif KR","Noto Serif SC",serif;
+  --font-display: "Shippori Mincho","Yu Mincho","Hiragino Mincho Pro","Noto Serif KR","Noto Serif SC","Noto Serif JP",serif;
+  --font-sans: "Zen Kaku Gothic New","Noto Sans JP","Noto Sans KR","Noto Sans SC",sans-serif;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--font-serif);
+  font-size:16px;
+  line-height:1.9;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; margin:0; padding:0; }
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:700;
+  margin:0;
+  letter-spacing:.02em;
+}
+p{ margin:0; }
+button{ font-family:inherit; cursor:pointer; }
+
+/* UI chrome (nav, buttons, labels, tabular data) stays in the gothic sans
+   for legibility — only running description copy switches to mincho. */
+.nav-links, .lang-toggle, .btn, .btn-reserve, .menu-tab, .badge,
+.footer-col h4, .footer-col a, .footer-bottom, .brand-type .en,
+.store-meta dt, .news-item time, .media-item time, .breadcrumb,
+.tag, .num, .region{
+  font-family:var(--font-sans);
+}
+
+.container{
+  width:100%;
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* texture: faint washi grain -------------------------------------------- */
+.texture{
+  position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.035; mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* seigaiha wave pattern, used as a thin divider -------------------------- */
+.wave-divider{
+  height:22px;
+  background-repeat:repeat-x;
+  background-size:44px 22px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='22'><g fill='none' stroke='%23bd9a3a' stroke-width='1.2' opacity='0.55'><path d='M0 22a22 22 0 0 1 44 0'/><path d='M-11 22a22 22 0 0 1 44 0' transform='translate(0,-7)'/></g></svg>");
+}
+.wave-divider.on-dark{
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='44' height='22'><g fill='none' stroke='%23e7cf86' stroke-width='1.2' opacity='0.4'><path d='M0 22a22 22 0 0 1 44 0'/><path d='M-11 22a22 22 0 0 1 44 0' transform='translate(0,-7)'/></g></svg>");
+}
+
+/* ==========================================================================
+   Header / Nav
+   ========================================================================== */
+.site-header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px 28px;
+  background:rgba(17,48,59,.0);
+  transition:background .35s var(--ease), padding .35s var(--ease), box-shadow .35s var(--ease);
+}
+.site-header.scrolled{
+  background:rgba(10,32,39,.86);
+  backdrop-filter:blur(14px) saturate(140%);
+  padding:10px 28px;
+  box-shadow:0 10px 30px -18px rgba(0,0,0,.6);
+}
+.brand{
+  display:flex; align-items:center; gap:10px;
+  color:var(--paper);
+  font-family:"Shippori Mincho",serif;
+}
+.brand .mark{ width:44px; height:44px; flex:none; object-fit:contain; }
+.footer-brand .mark{ width:52px; height:52px; }
+.brand-type{ display:flex; flex-direction:column; line-height:1.15; }
+.brand-type .jp{ font-size:1.2rem; letter-spacing:.08em; }
+.brand-type .en{ font-size:.58rem; letter-spacing:.32em; color:var(--gold-soft); font-family:"Zen Kaku Gothic New",sans-serif; margin-top:3px; }
+
+.nav-main{ display:flex; align-items:center; gap:22px; }
+.nav-links{ display:flex; align-items:center; gap:18px; }
+.nav-links a{
+  position:relative; color:var(--paper); font-size:.82rem; letter-spacing:.04em; opacity:.88;
+  padding:4px 0; white-space:nowrap;
+}
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--gold-soft);
+  transition:width .3s var(--ease);
+}
+.nav-links a:hover::after,
+.nav-links a[aria-current="page"]::after{ width:100%; }
+.nav-links a[aria-current="page"]{ opacity:1; }
+
+.lang-toggle{
+  display:flex; align-items:center; border:1px solid var(--line-on-dark); border-radius:999px; overflow:hidden;
+}
+.lang-toggle button{
+  background:none; border:none; color:var(--paper); font-size:.68rem; letter-spacing:.06em;
+  font-family:var(--font-sans);
+  padding:6px 9px; opacity:.6; transition:opacity .25s, background .25s;
+}
+.lang-toggle button.active{ opacity:1; background:rgba(231,207,134,.16); color:var(--gold-soft); }
+.nav-drawer .lang-toggle button{ font-size:.78rem; padding:8px 13px; }
+
+.nav-cta{
+  display:flex; gap:8px;
+}
+.btn-reserve{
+  display:inline-flex; align-items:center; gap:6px;
+  background:linear-gradient(155deg,var(--gold-soft),var(--gold) 55%,var(--gold-deep));
+  color:#2a2008; font-size:.76rem; font-weight:700; letter-spacing:.04em;
+  padding:9px 16px; border-radius:999px; box-shadow:0 8px 18px -8px rgba(0,0,0,.55);
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+  white-space:nowrap;
+}
+.btn-reserve:hover{ transform:translateY(-2px); box-shadow:0 12px 22px -8px rgba(0,0,0,.6); }
+
+.nav-toggle{
+  display:none; flex-direction:column; gap:5px; background:none; border:none; padding:6px;
+}
+.nav-toggle span{ width:24px; height:2px; background:var(--paper); display:block; }
+
+/* ==========================================================================
+   Buttons / shared
+   ========================================================================== */
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:14px 30px;
+  border-radius:999px; font-size:.86rem; letter-spacing:.08em; font-weight:700;
+  transition:transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.btn-gold{
+  background:linear-gradient(155deg,var(--gold-soft),var(--gold) 55%,var(--gold-deep));
+  color:#2a2008; box-shadow:0 10px 26px -10px rgba(0,0,0,.5);
+}
+.btn-gold:hover{ transform:translateY(-2px); }
+.btn-line{
+  border:1px solid currentColor; color:var(--paper); background:transparent;
+}
+.btn-line:hover{ background:rgba(255,255,255,.08); }
+.btn-ink{ border:1px solid var(--ink); color:var(--ink); background:transparent; }
+.btn-ink:hover{ background:var(--ink); color:var(--cream); }
+
+.eyebrow{
+  display:flex; align-items:center; gap:14px;
+  font-family:"Shippori Mincho",serif; color:var(--shu); font-size:.85rem; letter-spacing:.3em;
+  margin-bottom:18px;
+}
+.eyebrow::before{ content:""; width:34px; height:1px; background:var(--shu); }
+
+.section{ position:relative; padding:110px 0; }
+.section-tight{ padding:70px 0; }
+.on-indigo{ background:var(--indigo); color:var(--paper); }
+.on-indigo h2,.on-indigo h3{ color:var(--paper); }
+.on-cream-deep{ background:var(--cream-deep); }
+
+/* vertical tategaki label, used as a quiet traditional accent ----------- */
+.tategaki{
+  writing-mode:vertical-rl; text-orientation:upright;
+  font-family:"Shippori Mincho",serif; letter-spacing:.3em; font-size:.82rem;
+  color:var(--gold-deep); position:absolute;
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero{
+  position:relative; min-height:100svh; display:flex; align-items:flex-end;
+  background:var(--indigo-deep);
+  overflow:hidden;
+}
+.hero-media{ position:absolute; inset:0; }
+.hero-media img{ width:100%; height:100%; object-fit:cover; opacity:.78; }
+.hero-media::after{
+  content:""; position:absolute; inset:0;
+  background:
+    linear-gradient(180deg,rgba(10,32,39,.35) 0%, rgba(10,32,39,.35) 40%, rgba(8,20,25,.92) 96%),
+    linear-gradient(90deg, rgba(8,20,25,.55) 0%, transparent 42%);
+}
+.hero-inner{
+  position:relative; z-index:2; width:100%;
+  padding-bottom:90px;
+}
+.hero-eyebrow{
+  color:var(--gold-soft); font-family:"Shippori Mincho",serif; letter-spacing:.4em; font-size:.82rem;
+  display:flex; align-items:center; gap:16px; margin-bottom:22px;
+}
+.hero-eyebrow::before{ content:""; width:44px; height:1px; background:var(--gold-soft); }
+.hero h1{
+  color:var(--paper); font-size:clamp(2.6rem,7vw,5.4rem); line-height:1.08;
+}
+.hero h1 small{
+  display:block; font-size:.32em; letter-spacing:.42em; color:var(--gold-soft); font-family:"Zen Kaku Gothic New",sans-serif; margin-top:16px;
+}
+.hero-sub{
+  color:rgba(246,240,226,.86); max-width:48ch; margin-top:24px; font-size:1.02rem;
+}
+.hero-actions{ display:flex; flex-wrap:wrap; gap:14px; margin-top:38px; }
+.hero-scroll{
+  position:absolute; right:28px; bottom:28px; z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:10px; color:var(--gold-soft);
+}
+.hero-scroll .line{ width:1px; height:46px; background:linear-gradient(var(--gold-soft),transparent); animation:scrollpulse 2.4s ease-in-out infinite; }
+@keyframes scrollpulse{ 0%,100%{ opacity:.25; } 50%{ opacity:1; } }
+
+/* ==========================================================================
+   Intro / lede
+   ========================================================================== */
+.lede{
+  display:grid; grid-template-columns:.9fr 1.3fr; gap:70px; align-items:start;
+}
+.lede h2{ font-size:clamp(1.8rem,3vw,2.6rem); line-height:1.5; }
+.lede p{ color:var(--ink-soft); font-size:1.02rem; }
+.lede-figure{ position:relative; }
+.lede-figure img{ border-radius:var(--radius); box-shadow:var(--shadow); }
+.lede-figure .ensou{
+  position:absolute; width:120px; height:120px; top:-34px; left:-34px; opacity:.8;
+}
+
+/* reusable split layouts (image+copy, profile card, etc.) — all collapse to
+   a single column on mobile so nothing is forced to a fixed width that
+   can't shrink below the viewport. */
+.split-even{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+.split-news{ display:grid; grid-template-columns:.7fr 1.3fr; gap:60px; }
+.profile-grid{ display:grid; grid-template-columns:220px 1fr; gap:50px; align-items:start; }
+@media (max-width:860px){
+  .split-even,.split-news{ grid-template-columns:1fr; gap:36px; }
+  .profile-grid{ grid-template-columns:1fr; gap:26px; }
+  .profile-grid img{ max-width:220px; }
+}
+
+/* ==========================================================================
+   Bento grid (kodawari / commitments) — a jūbako-style grid of uniform
+   square compartments. Each cell shows the restaurant's own original
+   artwork (Japanese, baked into the image) by default; in EN/KO/ZH the
+   image swaps out for a live translated text card, via CSS only — the
+   image itself never needs to change.
+   ========================================================================== */
+.bento{
+  display:grid; gap:3px; background:var(--indigo);
+  grid-template-columns:repeat(4,1fr);
+  border:3px solid var(--indigo);
+}
+.bento.teaser{ grid-template-columns:repeat(3,1fr); }
+.bento-cell{
+  position:relative; aspect-ratio:1/1; overflow:hidden; background:var(--paper);
+}
+.bento-cell .cell-img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;
+}
+.bento-cell .cell-text{
+  position:absolute; inset:0; padding:9% 10%; background:var(--paper);
+  display:flex; flex-direction:column; justify-content:flex-end;
+  transition:background .35s var(--ease);
+}
+.bento-cell:hover .cell-text{ background:var(--cream-deep); }
+html[data-lang="ja"] .bento-cell .cell-text{ display:none; }
+
+/* Non-Japanese: the fixed 1:1 crop only works because the Japanese
+   artwork has its own caption baked in. For EN/KO/ZH we can't hide the
+   photo and cram a translated caption into the same tight square — it
+   overflows and clips — so instead the cell grows to a natural height:
+   a smaller crop of the same image on top, caption flowing below it. */
+html:not([data-lang="ja"]) .bento-cell:not(.signature){
+  aspect-ratio:auto; overflow:visible; display:flex; flex-direction:column;
+}
+html:not([data-lang="ja"]) .bento-cell:not(.signature) .cell-img{
+  position:static; width:100%; height:auto; aspect-ratio:16/11;
+}
+html:not([data-lang="ja"]) .bento-cell:not(.signature) .cell-text{
+  position:static; inset:auto; display:block; padding:16px 18px 22px; flex:1;
+}
+html:not([data-lang="ja"]) .bento-cell:not(.signature) .num{
+  position:static; display:block; margin-bottom:6px;
+}
+
+.bento-cell .num{
+  position:absolute; top:7%; right:8%; font-family:var(--font-sans); color:var(--gold-deep); font-size:.72rem; letter-spacing:.1em;
+}
+.bento-cell h3{ font-size:1.5rem; color:var(--shu-deep); line-height:1; }
+.bento-cell p{ font-size:.78rem; color:var(--ink-soft); margin-top:10px; line-height:1.7; }
+.bento-cell .tag{ font-size:.64rem; letter-spacing:.1em; color:var(--gold-deep); margin-bottom:8px; }
+
+.drink-tags{ display:flex; flex-wrap:wrap; gap:10px; margin:24px 0 6px; }
+.drink-tags span{
+  font-size:.74rem; letter-spacing:.03em; padding:6px 14px; border-radius:999px;
+  border:1px solid var(--line); color:var(--ink-soft); font-family:"Zen Kaku Gothic New",sans-serif;
+  background:var(--paper);
+}
+
+.bento-cell.signature{ background:var(--shu); display:flex; align-items:center; justify-content:center; text-align:center; padding:12%; }
+.bento-cell.signature .mark{ width:34%; height:auto; margin:0 auto 14px; filter:brightness(0) invert(1) opacity(.9); }
+.bento-cell.signature p{ color:var(--gold-soft); font-family:var(--font-display); font-size:1.05rem; margin-top:0; letter-spacing:.04em; }
+
+@media (max-width:980px){ .bento{ grid-template-columns:repeat(3,1fr); } }
+@media (max-width:620px){ .bento{ grid-template-columns:repeat(2,1fr); } .bento-cell .num{ display:none; } }
+
+/* ==========================================================================
+   History timeline
+   ========================================================================== */
+.timeline{ position:relative; margin-top:60px; }
+.timeline::before{
+  content:""; position:absolute; left:140px; top:0; bottom:0; width:1px; background:var(--line);
+}
+.timeline-row{
+  display:grid; grid-template-columns:140px 1fr; gap:50px; padding-bottom:70px; position:relative;
+}
+.timeline-row:last-child{ padding-bottom:0; }
+.timeline-year{
+  font-family:"Shippori Mincho",serif; font-size:1.3rem; color:var(--shu); text-align:right; padding-top:2px;
+  padding-right:24px;
+}
+.timeline-year span{ display:block; font-size:.66rem; letter-spacing:.12em; color:var(--ink-soft); font-family:"Zen Kaku Gothic New",sans-serif; margin-top:4px; }
+.timeline-dot{
+  position:absolute; left:134px; top:7px; width:13px; height:13px; border-radius:50%;
+  background:var(--cream); border:2px solid var(--shu);
+}
+.timeline-body h3{ font-size:1.25rem; margin-bottom:10px; }
+.timeline-body p{ color:var(--ink-soft); max-width:60ch; }
+.timeline-photos{ display:flex; gap:14px; margin-top:20px; flex-wrap:wrap; }
+.archival{
+  background:var(--paper); padding:8px 8px 14px; box-shadow:var(--shadow); max-width:220px;
+  transform:rotate(var(--rot,0deg));
+}
+.archival img{ filter:sepia(.25) contrast(1.02); }
+.archival figcaption{
+  font-size:.68rem; color:var(--ink-soft); text-align:center; margin-top:8px; letter-spacing:.03em;
+}
+
+/* ==========================================================================
+   Store cards
+   ========================================================================== */
+.store-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:2px solid var(--indigo); }
+.store-card{ background:var(--paper); padding:44px; display:flex; flex-direction:column; gap:18px; }
+.store-card .store-name{ font-size:1.7rem; }
+.store-card .store-name .en{ display:block; font-size:.6rem; letter-spacing:.3em; color:var(--gold-deep); font-family:"Zen Kaku Gothic New",sans-serif; margin-top:6px; }
+.store-meta{ display:grid; grid-template-columns:auto 1fr; gap:6px 16px; font-size:.86rem; color:var(--ink-soft); }
+.store-meta dt{ color:var(--shu); letter-spacing:.08em; font-size:.74rem; padding-top:2px; }
+.store-meta dd{ margin:0; }
+.store-actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+
+/* ==========================================================================
+   Menu
+   ========================================================================== */
+.menu-tabs{ display:flex; gap:10px; margin-bottom:46px; flex-wrap:wrap; }
+.menu-tab{
+  padding:10px 22px; border-radius:999px; border:1px solid var(--line); font-size:.82rem; letter-spacing:.06em;
+  background:var(--paper); color:var(--ink-soft); transition:all .25s var(--ease);
+}
+.menu-tab.active,
+.menu-tab:hover{ background:var(--indigo); color:var(--paper); border-color:var(--indigo); }
+
+.menu-group{ margin-bottom:64px; }
+.menu-group h3{
+  font-size:1.5rem; color:var(--shu-deep); display:flex; align-items:baseline; gap:16px; margin-bottom:6px;
+}
+.menu-group .note{ font-size:.8rem; color:var(--ink-soft); margin-bottom:26px; }
+.menu-list{ display:flex; flex-direction:column; }
+.menu-item{
+  display:flex; justify-content:space-between; align-items:baseline; gap:20px;
+  padding:16px 0; border-bottom:1px dashed var(--line);
+}
+.menu-item .name{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+.menu-item .name .jp{ font-size:1.02rem; }
+.menu-item .name .sub{ font-size:.78rem; color:var(--ink-soft); }
+.menu-item .badge{
+  font-size:.64rem; letter-spacing:.04em; padding:3px 10px; border-radius:999px;
+  background:var(--gold-deep); color:var(--paper); font-weight:700; white-space:nowrap;
+}
+.menu-item .takeout{
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:.64rem; letter-spacing:.02em; padding:3px 9px 3px 7px; border-radius:999px;
+  background:rgba(17,48,59,.07); color:var(--indigo); font-weight:700; white-space:nowrap;
+  border:1px solid rgba(17,48,59,.22);
+}
+.menu-item .takeout svg{ width:11px; height:11px; flex:none; stroke:currentColor; }
+.menu-item .price{ font-family:"Shippori Mincho",serif; font-size:1.05rem; color:var(--shu); white-space:nowrap; }
+.menu-item .dots{ flex:1; border-bottom:1px dotted var(--line); margin-bottom:6px; min-width:20px; }
+
+/* ==========================================================================
+   News
+   ========================================================================== */
+.news-list{ display:flex; flex-direction:column; }
+.news-item{
+  display:grid; grid-template-columns:140px 1fr; gap:24px; padding:22px 0; border-bottom:1px solid var(--line);
+}
+@media (max-width:560px){
+  .news-item{ grid-template-columns:1fr; gap:6px; }
+}
+.news-item time{ color:var(--gold-deep); font-size:.84rem; letter-spacing:.04em; padding-top:2px; }
+.news-item p{ color:var(--ink-soft); }
+
+/* press strip */
+.press-strip{ display:flex; flex-wrap:wrap; gap:14px 34px; align-items:center; }
+.press-badge{ font-family:"Shippori Mincho",serif; font-size:.95rem; letter-spacing:.06em; color:var(--paper); opacity:.82; white-space:nowrap; }
+
+/* ==========================================================================
+   Sourcing strip (map-like journey)
+   ========================================================================== */
+.source-strip{
+  display:flex; flex-wrap:wrap; gap:1px; background:var(--line);
+  border:1px solid var(--line);
+}
+.source-stop{ flex:1 1 150px; background:var(--paper); padding:22px 18px; text-align:center; }
+.source-stop .region{ font-size:.68rem; letter-spacing:.12em; color:var(--shu); margin-bottom:8px; }
+.source-stop .item{ font-family:"Shippori Mincho",serif; font-size:1.2rem; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer{ background:var(--indigo-deep); color:rgba(246,240,226,.78); padding:90px 0 30px; }
+.footer-grid{ display:grid; grid-template-columns:1.2fr 1fr 1fr 1fr; gap:50px; }
+.footer-brand .brand-type .en{ color:var(--gold-soft); }
+.footer-brand p{ margin-top:18px; font-size:.86rem; color:rgba(246,240,226,.6); max-width:30ch; }
+.footer-col h4{ color:var(--gold-soft); font-size:.78rem; letter-spacing:.14em; font-family:"Zen Kaku Gothic New",sans-serif; margin-bottom:16px; }
+.footer-col ul{ display:flex; flex-direction:column; gap:10px; }
+.footer-col a{ font-size:.86rem; opacity:.82; transition:opacity .2s; }
+.footer-col a:hover{ opacity:1; color:var(--gold-soft); }
+.footer-bottom{
+  margin-top:70px; padding-top:26px; border-top:1px solid var(--line-on-dark);
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:.76rem; opacity:.6;
+}
+
+/* sticky mobile reservation bar ------------------------------------------ */
+.mobile-reserve-bar{
+  position:fixed; left:0; right:0; bottom:0; z-index:90; display:none;
+  background:var(--indigo-deep); border-top:1px solid var(--line-on-dark);
+  padding:10px 14px; gap:10px;
+}
+.mobile-reserve-bar a{ flex:1; justify-content:center; }
+
+/* ==========================================================================
+   Reveal on scroll
+   ========================================================================== */
+.reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.in{ opacity:1; transform:none; }
+
+/* ==========================================================================
+   Language toggle visibility
+   (actual JA/EN swap is done in JS by caching + replacing innerHTML)
+   ========================================================================== */
+
+/* ==========================================================================
+   Virtual tour video
+   ========================================================================== */
+.tour{ position:relative; height:72vh; min-height:420px; max-height:680px; overflow:hidden; background:var(--indigo-deep); }
+.tour-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.tour::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(0deg,rgba(8,20,25,.82) 0%,rgba(8,20,25,.15) 38%,rgba(8,20,25,.35) 100%);
+}
+.tour-caption{ position:absolute; left:0; right:0; bottom:0; z-index:2; padding:50px 28px; }
+.tour-caption .container{ padding:0; max-width:var(--container); margin:0 auto; }
+.tour-caption h2{ font-size:clamp(1.8rem,4vw,2.8rem); max-width:16ch; }
+
+/* ==========================================================================
+   Page header (non-home pages)
+   ========================================================================== */
+.page-header{
+  position:relative; padding:200px 0 90px; background:var(--indigo); color:var(--paper); overflow:hidden;
+}
+.page-header::before{
+  content:""; position:absolute; inset:0; opacity:.14; background-size:340px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='340' height='340'><g fill='none' stroke='white' stroke-width='1'><path d='M0 170a170 170 0 0 1 340 0'/><path d='M-85 170a170 170 0 0 1 340 0' transform='translate(0,-55)'/><path d='M85 170a170 170 0 0 1 340 0' transform='translate(0,55)'/></g></svg>");
+  background-repeat:repeat-x; background-position:bottom;
+}
+.page-header h1{ font-size:clamp(2.2rem,5vw,3.6rem); position:relative; z-index:1; }
+.page-header .breadcrumb{ position:relative; z-index:1; font-size:.8rem; letter-spacing:.1em; color:var(--gold-soft); margin-bottom:18px; display:flex; gap:10px; align-items:center; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+/* nav switches to the hamburger earlier than the rest of the layout —
+   six nav links + a 4-way language toggle + the reserve button need more
+   room than they're given before wrapping mid-word. */
+@media (max-width:1260px){
+  .nav-links,.nav-cta,.nav-main > .lang-toggle{ display:none; }
+  .nav-toggle{ display:flex; }
+}
+@media (max-width:980px){
+  .lede{ grid-template-columns:1fr; gap:40px; }
+  .store-grid{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; gap:40px; }
+  .timeline::before{ left:78px; }
+  .timeline-row{ grid-template-columns:78px 1fr; gap:22px; }
+  .timeline-dot{ left:72px; }
+  .timeline-year{ font-size:1.02rem; padding-right:14px; }
+  .timeline-year span{ font-size:.58rem; }
+  .mobile-reserve-bar{ display:flex; }
+  body{ padding-bottom:64px; }
+}
+@media (max-width:620px){
+  .footer-grid{ grid-template-columns:1fr; gap:34px; }
+  .menu-item{ flex-direction:column; gap:4px; }
+  .menu-item .price{ align-self:flex-end; }
+  .page-header{ padding:150px 0 60px; }
+  .bento-cell h3.jp-big{ font-size:1.6rem; }
+}
+
+/* ==========================================================================
+   Mobile nav drawer
+   ========================================================================== */
+.nav-drawer{
+  position:fixed; inset:0; z-index:150; background:var(--indigo-deep);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+  transform:translateY(-100%); transition:transform .45s var(--ease);
+}
+.nav-drawer.open{ transform:translateY(0); }
+.nav-drawer a{ color:var(--paper); font-family:"Shippori Mincho",serif; font-size:1.5rem; letter-spacing:.08em; }
+.nav-drawer .close{ position:absolute; top:22px; right:26px; background:none; border:none; color:var(--paper); font-size:1.6rem; }
+.nav-drawer .lang-toggle{ margin-top:10px; }

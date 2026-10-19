@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ja" data-lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>店舗案内｜うなぎ志乃ざき | Locations — Unagi Shinozaki</title>
+<meta name="description" content="八王子本店・吉祥寺店の住所、営業時間、アクセス、食べログ予約リンク。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2311303b'/%3E%3Cpath d='M20 50c0-16.5 13.5-30 30-30 11.7 0 21.7 6.7 26.6 16.5M80 50c0 16.5-13.5 30-30 30-11.7 0-21.7-6.7-26.6-16.5' stroke='%23e7cf86' stroke-width='4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+  .reserve-block{ display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:2px solid var(--gold); margin-bottom:90px; }
+  .reserve-card{ background:var(--indigo); color:var(--paper); padding:50px 44px; text-align:center; }
+  .reserve-card .store-name{ font-size:1.8rem; margin-bottom:6px; }
+  .reserve-card .en{ display:block; font-size:.62rem; letter-spacing:.3em; color:var(--gold-soft); font-family:"Zen Kaku Gothic New",sans-serif; margin-top:8px; }
+  .reserve-card .btn{ margin-top:26px; }
+  .map-frame{ border:0; width:100%; height:320px; filter:grayscale(.15) contrast(1.05); }
+  .access-list{ display:flex; flex-direction:column; gap:8px; margin-top:18px; font-size:.86rem; color:var(--ink-soft); }
+  .store-photos{ display:grid; grid-template-columns:1.2fr 1fr; gap:8px; margin-bottom:14px; }
+  .store-photos img{ width:100%; height:100%; object-fit:cover; box-shadow:var(--shadow); }
+  .store-photos .tall{ grid-row:span 3; aspect-ratio:3/5; }
+  .store-photos .wide{ aspect-ratio:16/10; }
+  @media (max-width:980px){
+    .reserve-block{ grid-template-columns:1fr; }
+    .store-card{ padding:30px 26px; }
+  }
+  @media (max-width:560px){
+    .store-photos{ display:flex; flex-direction:column; grid-template-columns:none; }
+    .store-photos .tall,
+    .store-photos .wide{ grid-row:auto; grid-column:auto; width:100%; height:auto; aspect-ratio:4/3; }
+    .store-card{ padding:22px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="texture"></div>
+
+<header class="site-header scrolled">
+  <a href="index.html" class="brand">
+    <img class="mark logo-img" src="assets/img/logo/shinozaki-logo.png" alt="志乃ざき">
+    <span class="brand-type"><span class="jp">志乃ざき</span><span class="en">SHINOZAKI&nbsp;·&nbsp;EST.&nbsp;1937</span></span>
+  </a>
+  <nav class="nav-main">
+    <ul class="nav-links">
+      <li><a href="index.html" data-ja="ホーム" data-en="Home" data-ko="홈" data-zh="首页">ホーム</a></li>
+      <li><a href="about.html" data-ja="当店について" data-en="Our Story" data-ko="가게 소개" data-zh="关于本店">当店について</a></li>
+      <li><a href="menu.html" data-ja="メニュー" data-en="Menu" data-ko="메뉴" data-zh="菜单">メニュー</a></li>
+      <li><a href="locations.html" aria-current="page" data-ja="店舗案内" data-en="Locations" data-ko="매장 안내" data-zh="门店信息">店舗案内</a></li>
+      <li><a href="delivery.html" data-ja="出前・持帰り" data-en="Delivery" data-ko="배달・포장" data-zh="外送・外带">出前・持帰り</a></li>
+      <li><a href="news.html" data-ja="お知らせ" data-en="News" data-ko="공지사항" data-zh="最新消息">お知らせ</a></li>
+      <li><a href="https://shinozaki.thebase.in/" target="_blank" rel="noopener" data-ja="オンラインショップ" data-en="Shop" data-ko="온라인 스토어" data-zh="网上商店">オンラインショップ</a></li>
+    </ul>
+    <div class="lang-toggle"><button data-lang-btn="ja">JA</button><button data-lang-btn="en">EN</button><button data-lang-btn="ko">KO</button><button data-lang-btn="zh">中文</button></div>
+    <div class="nav-cta"><a class="btn-reserve" href="#reserve" data-ja="ご予約（食べログ）" data-en="Reserve · Tabelog" data-ko="예약 (타베로그)" data-zh="预约（Tabelog）">ご予約（食べログ）</a></div>
+  </nav>
+  <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
+</header>
+
+<div class="nav-drawer">
+  <button class="close" aria-label="close">×</button>
+  <a href="index.html" data-ja="ホーム" data-en="Home" data-ko="홈" data-zh="首页">ホーム</a>
+  <a href="about.html" data-ja="当店について" data-en="Our Story" data-ko="가게 소개" data-zh="关于本店">当店について</a>
+  <a href="menu.html" data-ja="メニュー" data-en="Menu" data-ko="메뉴" data-zh="菜单">メニュー</a>
+  <a href="locations.html" data-ja="店舗案内" data-en="Locations" data-ko="매장 안내" data-zh="门店信息">店舗案内</a>
+  <a href="delivery.html" data-ja="出前・持帰り" data-en="Delivery" data-ko="배달・포장" data-zh="外送・外带">出前・持帰り</a>
+  <a href="news.html" data-ja="お知らせ" data-en="News" data-ko="공지사항" data-zh="最新消息">お知らせ</a>
+  <a href="https://shinozaki.thebase.in/" target="_blank" rel="noopener" data-ja="オンラインショップ" data-en="Online Shop" data-ko="온라인 스토어" data-zh="网上商店">オンラインショップ</a>
+  <div class="lang-toggle"><button data-lang-btn="ja">日本語</button><button data-lang-btn="en">ENGLISH</button><button data-lang-btn="ko">한국어</button><button data-lang-btn="zh">中文</button></div>
+</div>
+
+<header class="page-header">
+  <div class="container">
+    <p class="breadcrumb"><a href="index.html">HOME</a> / <span data-ja="店舗案内" data-en="Locations" data-ko="매장 안내" data-zh="门店信息">店舗案内</span></p>
+    <h1 data-ja="八王子本店・吉祥寺店" data-en="Hachiōji &amp; Kichijōji" data-ko="하치오지 본점 · 기치조지점" data-zh="八王子总店・吉祥寺店">八王子本店・吉祥寺店</h1>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+
+    <!-- quick reserve -->
+    <div class="reveal" id="reserve" style="margin-bottom:26px;scroll-margin-top:100px">
+      <p class="eyebrow" data-ja="食べログから予約" data-en="RESERVE ON TABELOG" data-ko="타베로그로 예약" data-zh="通过Tabelog预约">食べログから予約</p>
+    </div>
+    <div class="reserve-block reveal">
+      <div class="reserve-card">
+        <h2 class="store-name">八王子本店<span class="en">HACHIŌJI HONTEN</span></h2>
+        <p style="color:rgba(246,240,226,.8)" data-ja="042-624-3131" data-en="Tel. 042-624-3131" data-ko="Tel. 042-624-3131" data-zh="电话 042-624-3131">042-624-3131</p>
+        <a class="btn btn-gold" href="https://yoyaku.tabelog.com/yoyaku/net_booking_form/index?rcd=13016384" target="_blank" rel="noopener">
+          <span data-ja="食べログで予約する" data-en="Reserve on Tabelog" data-ko="타베로그에서 예약하기" data-zh="在Tabelog预约">食べログで予約する</span>
+        </a>
+      </div>
+      <div class="reserve-card">
+        <h2 class="store-name">吉祥寺店<span class="en">KICHIJŌJI</span></h2>
+        <p style="color:rgba(246,240,226,.8)" data-ja="0422-26-8839" data-en="Tel. 0422-26-8839" data-ko="Tel. 0422-26-8839" data-zh="电话 0422-26-8839">0422-26-8839</p>
+        <a class="btn btn-gold" href="https://yoyaku.tabelog.com/yoyaku/net_booking_form/index?rcd=13202263" target="_blank" rel="noopener">
+          <span data-ja="食べログで予約する" data-en="Reserve on Tabelog" data-ko="타베로그에서 예약하기" data-zh="在Tabelog预约">食べログで予約する</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ===================== HACHIOJI ===================== -->
+    <div class="reveal" id="hachioji" style="scroll-margin-top:100px;margin-bottom:30px">
+      <p class="eyebrow" data-ja="八王子本店" data-en="HACHIŌJI — MAIN STORE" data-ko="하치오지 본점" data-zh="八王子总店">八王子本店</p>
+      <h2 data-ja="創業の地、八王子本店" data-en="Hachiōji — where it all began" data-ko="창업의 땅, 하치오지 본점" data-zh="创业之地，八王子总店">創業の地、八王子本店</h2>
+    </div>
+    <div class="store-grid reveal" style="margin-bottom:40px">
+      <div class="store-card">
+        <div class="store-photos">
+          <img class="tall" src="assets/img/stores/hachioji/exterior.jpg" alt="八王子本店 外観" loading="lazy">
+          <img class="wide" src="assets/img/stores/hachioji/interior.jpg" alt="八王子本店 店内" loading="lazy">
+          <img class="wide" src="assets/img/stores/hachioji/interior-split.png" alt="八王子本店 店内の様子" loading="lazy">
+          <img class="wide" src="assets/img/home/top1.jpg" alt="八王子本店のうな重" loading="lazy">
+        </div>
+        <dl class="store-meta">
+          <dt data-ja="住所" data-en="Address" data-ko="주소" data-zh="地址">住所</dt><dd data-ja="東京都八王子市本町2-1" data-en="2-1 Honchō, Hachiōji, Tokyo 192-0066" data-ko="도쿄도 하치오지시 혼마치 2-1" data-zh="东京都八王子市本町2-1">東京都八王子市本町2-1</dd>
+          <dt data-ja="電話" data-en="Tel" data-ko="전화" data-zh="电话">電話</dt><dd>042-624-3131</dd>
+          <dt data-ja="昼" data-en="Lunch" data-ko="점심" data-zh="午市">昼</dt><dd data-ja="12:00〜14:00（L.O.）・14:30 close" data-en="12:00–2:00pm (L.O.) · closes 2:30pm" data-ko="12:00~14:00 (라스트오더) · 14:30 종료" data-zh="12:00～14:00（最后点单）· 14:30打烊">12:00〜14:00（L.O.）・14:30 close</dd>
+          <dt data-ja="夕" data-en="Dinner" data-ko="저녁" data-zh="晚市">夕</dt><dd data-ja="17:00〜20:00（L.O.）・20:30 close" data-en="5:00–8:00pm (L.O.) · closes 8:30pm" data-ko="17:00~20:00 (라스트오더) · 20:30 종료" data-zh="17:00～20:00（最后点单）· 20:30打烊">17:00〜20:00（L.O.）・20:30 close</dd>
+          <dt data-ja="定休" data-en="Closed" data-ko="정기휴무" data-zh="休息日">定休</dt><dd data-ja="水曜・木曜（祝日は変更の場合あり）" data-en="Wednesdays &amp; Thursdays (subject to change on holidays)" data-ko="수요일·목요일 (공휴일에는 변경될 수 있음)" data-zh="周三・周四（节假日可能调整）">水曜・木曜（祝日は変更の場合あり）</dd>
+          <dt data-ja="特徴" data-en="Notable" data-ko="특징" data-zh="特色">特徴</dt><dd data-ja="会席コース、どじょう柳川など八王子限定メニューあり" data-en="Exclusive kaiseki course menu and dishes like dojō yanagawa" data-ko="가이세키 코스, 미꾸라지 야나가와 등 하치오지 한정 메뉴 있음" data-zh="设有会席套餐、泥鳅柳川锅等八王子限定菜品">会席コース、どじょう柳川など八王子限定メニューあり</dd>
+        </dl>
+        <div class="store-actions">
+          <a class="btn btn-gold" href="https://yoyaku.tabelog.com/yoyaku/net_booking_form/index?rcd=13016384" target="_blank" rel="noopener"><span data-ja="食べログで予約" data-en="Reserve on Tabelog" data-ko="타베로그에서 예약" data-zh="在Tabelog预约">食べログで予約</span></a>
+          <a class="btn btn-ink" href="tel:042-624-3131"><span data-ja="電話をかける（042-624-3131）" data-en="Call 042-624-3131" data-ko="전화하기 (042-624-3131)" data-zh="致电 042-624-3131">電話をかける（042-624-3131）</span></a>
+          <a class="btn btn-ink" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%85%AB%E7%8E%8B%E5%AD%90%E5%B8%82%E6%9C%AC%E7%94%BA2-1+%E5%BF%97%E4%B9%83%E3%81%96%E3%81%8D" target="_blank" rel="noopener"><span data-ja="Googleマップ" data-en="Google Maps" data-ko="구글 지도" data-zh="Google地图">Googleマップ</span></a>
+        </div>
+      </div>
+      <div class="store-card">
+        <h3 class="store-name" data-ja="出前・お持ち帰り対応エリア" data-en="Delivery &amp; Takeout Area" data-ko="배달・포장 가능 지역" data-zh="外送・外带配送区域">出前・お持ち帰り対応エリア</h3>
+        <p style="color:var(--ink-soft);font-size:.86rem" data-ja="一人前より承ります。詳しいメニューはお電話にてお問い合わせください。" data-en="Orders of one serving or more accepted. Please call for the delivery menu." data-ko="1인분부터 주문 가능합니다. 자세한 메뉴는 전화로 문의해 주세요." data-zh="一人份起接受订购。详细菜单请致电咨询。">一人前より承ります。詳しいメニューはお電話にてお問い合わせください。</p>
+        <p style="margin-top:14px;font-size:.84rem;line-height:2;color:var(--ink-soft)">
+          本町・元横山町・横山町・大和田町・南町・新町・八幡町・八日町・明神町・平岡町・暁町・子安町・天神町・田町・小門町・南新町・三崎町・旭町・上野町・日吉町・千人町・八木町・万町・寺町・東町・中町・大横町・追分町・台町・散田町・富士見町・中野山王・中野上町・並木町・めじろ台・山田町・北野町・緑町・片倉町
+        </p>
+      </div>
+    </div>
+
+    <div class="wave-divider"></div>
+
+    <!-- ===================== KICHIJOJI ===================== -->
+    <div class="reveal" id="kichijoji" style="scroll-margin-top:100px;margin:60px 0 30px">
+      <p class="eyebrow" data-ja="吉祥寺店" data-en="KICHIJŌJI" data-ko="기치조지점" data-zh="吉祥寺店">吉祥寺店</p>
+      <h2 data-ja="二店舗目、吉祥寺店" data-en="Kichijōji — our second home" data-ko="두 번째 매장, 기치조지점" data-zh="第二家店，吉祥寺店">二店舗目、吉祥寺店</h2>
+    </div>
+    <div class="store-grid reveal">
+      <div class="store-card">
+        <div class="store-photos">
+          <img class="tall" src="assets/img/stores/kichijoji/exterior.jpg" alt="吉祥寺店 外観" loading="lazy">
+          <img class="wide" src="assets/img/stores/kichijoji/interior-guests.jpg" alt="吉祥寺店 店内" loading="lazy">
+          <img class="wide" src="assets/img/stores/kichijoji/interior-hall.jpg" alt="吉祥寺店 店内席" loading="lazy">
+          <img class="wide" src="assets/img/stores/kichijoji/interior-counter.jpg" alt="吉祥寺店 カウンター席" loading="lazy">
+        </div>
+        <dl class="store-meta">
+          <dt data-ja="住所" data-en="Address" data-ko="주소" data-zh="地址">住所</dt><dd data-ja="東京都武蔵野市吉祥寺南町2-25-10" data-en="2-25-10 Kichijōji Minamichō, Musashino, Tokyo 180-0003" data-ko="도쿄도 무사시노시 기치조지미나미초 2-25-10" data-zh="东京都武藏野市吉祥寺南町2-25-10">東京都武蔵野市吉祥寺南町2-25-10</dd>
+          <dt data-ja="電話" data-en="Tel" data-ko="전화" data-zh="电话">電話</dt><dd>0422-26-8839</dd>
+          <dt data-ja="昼" data-en="Lunch" data-ko="점심" data-zh="午市">昼</dt><dd data-ja="12:00〜14:00（L.O.）" data-en="12:00–2:00pm (L.O.)" data-ko="12:00~14:00 (라스트오더)" data-zh="12:00～14:00（最后点单）">12:00〜14:00（L.O.）</dd>
+          <dt data-ja="夕" data-en="Dinner" data-ko="저녁" data-zh="晚市">夕</dt><dd data-ja="17:00〜20:00（L.O.）・20:30 close" data-en="5:00–8:00pm (L.O.) · closes 8:30pm" data-ko="17:00~20:00 (라스트오더) · 20:30 종료" data-zh="17:00～20:00（最后点单）· 20:30打烊">17:00〜20:00（L.O.）・20:30 close</dd>
+          <dt data-ja="定休" data-en="Closed" data-ko="정기휴무" data-zh="休息日">定休</dt><dd data-ja="水曜・木曜" data-en="Wednesdays &amp; Thursdays" data-ko="수요일·목요일" data-zh="周三・周四">水曜・木曜</dd>
+          <dt data-ja="特徴" data-en="Notable" data-ko="특징" data-zh="特色">特徴</dt><dd data-ja="焼きとり、チーズだし巻きなど吉祥寺限定の一品も" data-en="Exclusive small plates like yakitori and cheese dashi-maki" data-ko="야키토리, 치즈 다시마키 등 기치조지 한정 메뉴도" data-zh="设有烤鸡肉串、芝士高汤蛋卷等吉祥寺限定小菜">焼きとり、チーズだし巻きなど吉祥寺限定の一品も</dd>
+        </dl>
+        <div class="store-actions">
+          <a class="btn btn-gold" href="https://yoyaku.tabelog.com/yoyaku/net_booking_form/index?rcd=13202263" target="_blank" rel="noopener"><span data-ja="食べログで予約" data-en="Reserve on Tabelog" data-ko="타베로그에서 예약" data-zh="在Tabelog预约">食べログで予約</span></a>
+          <a class="btn btn-ink" href="tel:0422-26-8839"><span data-ja="電話をかける（0422-26-8839）" data-en="Call 0422-26-8839" data-ko="전화하기 (0422-26-8839)" data-zh="致电 0422-26-8839">電話をかける（0422-26-8839）</span></a>
+          <a class="btn btn-ink" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E4%BA%AC%E9%83%BD%E6%AD%A6%E8%94%B5%E9%87%8E%E5%B8%82%E5%90%89%E7%A5%A5%E5%AF%BA%E5%8D%97%E7%94%BA2-25-10" target="_blank" rel="noopener"><span data-ja="Googleマップ" data-en="Google Maps" data-ko="구글 지도" data-zh="Google地图">Googleマップ</span></a>
+        </div>
+      </div>
+      <div class="store-card">
+        <h3 class="store-name" data-ja="出前・お持ち帰り対応エリア" data-en="Delivery &amp; Takeout Area" data-ko="배달・포장 가능 지역" data-zh="外送・外带配送区域">出前・お持ち帰り対応エリア</h3>
+        <p style="color:var(--ink-soft);font-size:.86rem" data-ja="一人前より承ります。詳しいメニューはお電話にてお問い合わせください。" data-en="Orders of one serving or more accepted. Please call for the delivery menu." data-ko="1인분부터 주문 가능합니다. 자세한 메뉴는 전화로 문의해 주세요." data-zh="一人份起接受订购。详细菜单请致电咨询。">一人前より承ります。詳しいメニューはお電話にてお問い合わせください。</p>
+        <p style="margin-top:14px;font-size:.84rem;line-height:2;color:var(--ink-soft)">
+          吉祥寺東町・吉祥寺南町・吉祥寺北町・中町・吉祥寺本町・御殿山・井の頭・杉並区松庵・西荻南・下連雀・宮前・久我山
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="brand">
+        <img class="mark logo-img" src="assets/img/logo/shinozaki-logo.png" alt="志乃ざき">
+        <span class="brand-type"><span class="jp">志乃ざき</span><span class="en">SHINOZAKI · EST. 1937</span></span>
+      </a>
+      <p data-ja="昭和十二年創業。九州鹿児島産の活鰻と備長炭火で、三代続くうなぎの味を守り続けています。" data-en="Founded 1937. Three generations of charcoal-grilled eel, made with live eel from Kagoshima." data-ko="1937년 창업. 규슈 가고시마산 활장어와 비장탄 숯불로, 3대째 이어온 장어 맛을 지켜오고 있습니다." data-zh="创业于1937年。以九州鹿儿岛产活鳗鱼与备长炭炭火，守护三代传承的鳗鱼风味。">昭和十二年創業。九州鹿児島産の活鰻と備長炭火で、三代続くうなぎの味を守り続けています。</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-ja="サイト内" data-en="EXPLORE" data-ko="사이트 내" data-zh="站内导航">サイト内</h4>
+      <ul>
+        <li><a href="about.html" data-ja="当店について" data-en="Our Story" data-ko="가게 소개" data-zh="关于本店">当店について</a></li>
+        <li><a href="menu.html" data-ja="メニュー" data-en="Menu" data-ko="메뉴" data-zh="菜单">メニュー</a></li>
+        <li><a href="locations.html" data-ja="店舗案内" data-en="Locations" data-ko="매장 안내" data-zh="门店信息">店舗案内</a></li>
+      <li><a href="delivery.html" data-ja="出前・持帰り" data-en="Delivery" data-ko="배달・포장" data-zh="外送・外带">出前・持帰り</a></li>
+        <li><a href="news.html" data-ja="お知らせ" data-en="News" data-ko="공지사항" data-zh="最新消息">お知らせ</a></li>
+        <li><a href="https://shinozaki.thebase.in/" target="_blank" rel="noopener" data-ja="オンラインショップ" data-en="Online Shop" data-ko="온라인 스토어" data-zh="网上商店">オンラインショップ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-ja="八王子本店" data-en="HACHIŌJI" data-ko="하치오지 본점" data-zh="八王子总店">八王子本店</h4>
+      <ul>
+        <li data-ja="東京都八王子市本町2-1" data-en="2-1 Honchō, Hachiōji, Tokyo" data-ko="도쿄도 하치오지시 혼마치 2-1" data-zh="东京都八王子市本町2-1">東京都八王子市本町2-1</li>
+        <li>042-624-3131</li>
+        <li><a href="https://yoyaku.tabelog.com/yoyaku/net_booking_form/index?rcd=13016384" target="_blank" rel="noopener" data-ja="食べログで予約 →" data-en="Reserve on Tabelog →" data-ko="타베로그에서 예약 →" data-zh="在Tabelog预约 →">食べログで予約 →</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 data-ja="吉祥寺店" data-en="KICHIJŌJI" data-ko="기치조지점" data-zh="吉祥寺店">吉祥寺店</h4>
+      <ul>
+        <li data-ja="東京都武蔵野市吉祥寺南町2-25-10" data-en="2-25-10 Kichijōji Minamichō, Musashino, Tokyo" data-ko="도쿄도 무사시노시 기치조지미나미초 2-25-10" data-zh="东京都武藏野市吉祥寺南町2-25-10">東京都武蔵野市吉祥寺南町2-25-10</li>
+        <li>0422-26-8839</li>
+        <li><a href="https://yoyaku.tabelog.com/yoyaku/net_booking_form/index?rcd=13202263" target="_blank" rel="noopener" data-ja="食べログで予約 →" data-en="Reserve on Tabelog →" data-ko="타베로그에서 예약 →" data-zh="在Tabelog预约 →">食べログで予約 →</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>Copyright SHINOZAKI Co., Ltd All Rights Reserved.</span>
+    <span data-ja="本サイトはデザイン刷新版（制作中）です。" data-en="This is a redesigned concept site." data-ko="본 사이트는 디자인 리뉴얼 버전(제작 중)입니다." data-zh="本网站为设计改版版本（制作中）。">本サイトはデザイン刷新版（制作中）です。</span>
+  </div>
+</footer>
+
+<div class="mobile-reserve-bar">
+  <a class="btn btn-gold" href="https://yoyaku.tabelog.com/yoyaku/net_booking_form/index?rcd=13016384" target="_blank" rel="noopener" style="padding:11px 14px;font-size:.74rem"><span data-ja="八王子店 予約" data-en="Reserve Hachiōji" data-ko="하치오지점 예약" data-zh="预约八王子店">八王子店 予約</span></a>
+  <a class="btn btn-gold" href="https://yoyaku.tabelog.com/yoyaku/net_booking_form/index?rcd=13202263" target="_blank" rel="noopener" style="padding:11px 14px;font-size:.74rem"><span data-ja="吉祥寺店 予約" data-en="Reserve Kichijōji" data-ko="기치조지점 예약" data-zh="预约吉祥寺店">吉祥寺店 予約</span></a>
+</div>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

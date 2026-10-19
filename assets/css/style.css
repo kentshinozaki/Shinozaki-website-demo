@@ -305,14 +305,28 @@ html[data-lang="ja"] .bento-cell .cell-text{ display:none; }
    photo and cram a translated caption into the same tight square — it
    overflows and clips — so instead the cell grows to a natural height:
    a smaller crop of the same image on top, caption flowing below it. */
+html:not([data-lang="ja"]) .bento-cell{
+  /* a grid track widens to fit whichever cell in its column needs the
+     most space; without this, one long unbroken word (e.g. "Katsuobushi")
+     silently stretches its whole column wider than the other one, so
+     every image in that column renders visibly larger than its row
+     partner even though they share the same aspect-ratio. */
+  min-width:0;
+}
 html:not([data-lang="ja"]) .bento-cell:not(.signature){
   aspect-ratio:auto; overflow:visible; display:flex; flex-direction:column;
 }
+html:not([data-lang="ja"]) .bento-cell.signature{
+  /* let it stretch to match whatever height its row partner's
+     (often much longer) translated caption ends up needing, instead of
+     staying a fixed square and leaving a gap below it. */
+  aspect-ratio:auto;
+}
 html:not([data-lang="ja"]) .bento-cell:not(.signature) .cell-img{
-  position:static; width:100%; height:auto; aspect-ratio:16/11;
+  position:static; width:100%; height:auto; aspect-ratio:16/11; flex:none;
 }
 html:not([data-lang="ja"]) .bento-cell:not(.signature) .cell-text{
-  position:static; inset:auto; display:block; padding:16px 18px 22px; flex:1;
+  position:static; inset:auto; display:block; padding:16px 18px 22px; flex:1; min-width:0;
 }
 html:not([data-lang="ja"]) .bento-cell:not(.signature) .num{
   position:static; display:block; margin-bottom:6px;
@@ -321,8 +335,8 @@ html:not([data-lang="ja"]) .bento-cell:not(.signature) .num{
 .bento-cell .num{
   position:absolute; top:7%; right:8%; font-family:var(--font-sans); color:var(--gold-deep); font-size:.72rem; letter-spacing:.1em;
 }
-.bento-cell h3{ font-size:1.5rem; color:var(--shu-deep); line-height:1; }
-.bento-cell p{ font-size:.78rem; color:var(--ink-soft); margin-top:10px; line-height:1.7; }
+.bento-cell h3{ font-size:1.5rem; color:var(--shu-deep); line-height:1; overflow-wrap:break-word; }
+.bento-cell p{ font-size:.78rem; color:var(--ink-soft); margin-top:10px; line-height:1.7; overflow-wrap:break-word; }
 .bento-cell .tag{ font-size:.64rem; letter-spacing:.1em; color:var(--gold-deep); margin-bottom:8px; }
 
 .drink-tags{ display:flex; flex-wrap:wrap; gap:10px; margin:24px 0 6px; }

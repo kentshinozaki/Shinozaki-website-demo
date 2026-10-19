@@ -299,7 +299,6 @@ button{ font-family:inherit; cursor:pointer; }
 }
 .bento-cell:hover .cell-text{ background:var(--cream-deep); }
 html[data-lang="ja"] .bento-cell .cell-text{ display:none; }
-
 /* Non-Japanese: the fixed 1:1 crop only works because the Japanese
    artwork has its own caption baked in. For EN/KO/ZH we can't hide the
    photo and cram a translated caption into the same tight square — it

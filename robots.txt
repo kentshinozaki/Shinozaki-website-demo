@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shinozaki-website-demo.kentshinozaki3131.workers.dev/sitemap.xml

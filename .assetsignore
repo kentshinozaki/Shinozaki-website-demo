@@ -1,0 +1,9 @@
+.git
+.gitignore
+.assetsignore
+.wrangler
+.claude
+wrangler.jsonc
+_backups
+*.zip
+.DS_Store
